@@ -290,7 +290,7 @@ public class HourglassController : MonoBehaviour
         if (energyCurrentLongth > 100) energyCurrentLongth = 100;
         if (energyCurrentLongth < 0) energyCurrentLongth = 0;
 
-        print(energyCurrentLongth.ToString());
+        
         //如果小鱼在水里，恢复能量条
         if (inWater == true && energyCurrentLongth<=100)
         {
@@ -305,5 +305,7 @@ public class HourglassController : MonoBehaviour
 
         HP.text = "HP: " + HPcurrent.ToString("F0") + "%";
         Energy.text = "Energy: " + energyCurrentLongth.ToString("F0") + "%";
+
+        if (HPcurrent < 0) HPcurrent = 0;
     }
 }
