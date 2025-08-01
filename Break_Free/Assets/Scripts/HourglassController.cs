@@ -48,6 +48,8 @@ public class HourglassController : MonoBehaviour
     float maxHP = 100;
     public TextMesh HP,Energy;
 
+    //新增功能：碰到tag为handle的碰撞体就变成该碰撞体的子物体
+
 
     void Start()
     {
@@ -308,4 +310,29 @@ public class HourglassController : MonoBehaviour
 
         if (HPcurrent < 0) HPcurrent = 0;
     }
+
+    //当碰到把手时：
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        tag = collision.collider.tag;
+        if (tag == "handle") 
+        {
+            
+            
+            transform.SetParent(collision.transform.parent);
+            //transform.eulerAngles += new Vector3(0, 0, collision.transform.parent.GetComponent<SceneRotationController>().targetRotation);
+        }
+    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        tag = collision.collider.tag;
+        if (tag == "handle")
+        {
+            
+            transform.SetParent(null);
+            
+        }
+    }
+
+   
 }
