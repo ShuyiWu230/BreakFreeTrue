@@ -38,6 +38,8 @@ public class HourglassController : MonoBehaviour
     private Renderer fishRenderer;
     private bool isLeaking = false;
     private float dropSpawnTimer = 0f; // 水滴生成计时器
+    private FlipSoundPlayer flipSoundPlayer;
+
 
     [Header("Fish energyBar Settings")]
     //小鱼精力条
@@ -68,6 +70,8 @@ public class HourglassController : MonoBehaviour
 
         //重置精力条
         energyCurrentLongth = energyBarLongth;
+        flipSoundPlayer = GetComponent<FlipSoundPlayer>();
+
     }
 
     void Update()
@@ -239,9 +243,13 @@ public class HourglassController : MonoBehaviour
     {
         if (!isFlipping)
         {
+            if (flipSoundPlayer != null)
+                flipSoundPlayer.PlayFlipSound();  // 💡 在翻转前播放音效！
+
             StartCoroutine(FlipCoroutine(direction));
         }
     }
+
 
     // 翻转动画协程
     System.Collections.IEnumerator FlipCoroutine(int direction)
