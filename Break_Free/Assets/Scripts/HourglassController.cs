@@ -1,5 +1,6 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HourglassController : MonoBehaviour
 {
@@ -28,6 +29,8 @@ public class HourglassController : MonoBehaviour
     public string recoveryItemTag = "RecoveryItem"; // 恢复物品标签
     public GameObject recoveryEffect; // 恢复特效
 
+
+
     // 内部变量
     private Transform sandTop;
     private Transform sandBottom;
@@ -39,8 +42,9 @@ public class HourglassController : MonoBehaviour
     private bool isLeaking = false;
     private float dropSpawnTimer = 0f; // 水滴生成计时器
     private FlipSoundPlayer flipSoundPlayer;
+    
 
-
+   
     [Header("Fish energyBar Settings")]
     //小鱼精力条
     public float energyBarLongth;//长度=100
@@ -49,6 +53,8 @@ public class HourglassController : MonoBehaviour
     float HPcurrent =100;
     float maxHP = 100;
     public TextMesh HP,Energy;
+    public Text EnergyText,WaterText,HPText;
+    public 
 
     //新增功能：碰到tag为handle的碰撞体就变成该碰撞体的子物体
 
@@ -72,10 +78,16 @@ public class HourglassController : MonoBehaviour
         energyCurrentLongth = energyBarLongth;
         flipSoundPlayer = GetComponent<FlipSoundPlayer>();
 
+        this.tag = "Player";
+        
     }
 
     void Update()
     {
+        //水量检测ui
+        WaterText.text = ((sandInTop + sandInBottom)*100).ToString("F0")+"%";
+
+
         // 沙子流失逻辑
         if (!isFlipping)
         {
@@ -124,6 +136,8 @@ public class HourglassController : MonoBehaviour
         //检测鱼状态控制精力条和血量
         FishInWaterTrack();
     }
+
+
 
     // 生成水滴
     void SpawnWaterDrop()
@@ -234,8 +248,13 @@ public class HourglassController : MonoBehaviour
         if (recoveryEffect != null)
         {
             recoveryEffect.SetActive(true);
-            recoveryEffect.SetActive(false);
+            Invoke("DisableRecoveryEffect", 0.5f);
         }
+    }
+
+    void DisableRecoveryEffect()
+    {
+        recoveryEffect.SetActive(false);
     }
 
     // 开始翻转
@@ -289,6 +308,9 @@ public class HourglassController : MonoBehaviour
         }
     }
 
+   
+
+
     void FishInWaterTrack() 
     {
         //如果小鱼不在水里，减能量条
@@ -313,12 +335,15 @@ public class HourglassController : MonoBehaviour
             HPcurrent -= 20 * Time.deltaTime;
         }
 
+        HPText.text = "HP: " + HPcurrent.ToString("F0") + "%";
         HP.text = "HP: " + HPcurrent.ToString("F0") + "%";
         Energy.text = "Energy: " + energyCurrentLongth.ToString("F0") + "%";
+        EnergyText.text = energyCurrentLongth.ToString("F0") + "%";
 
         if (HPcurrent < 0) HPcurrent = 0;
     }
 
+    
     //当碰到把手时：
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -341,6 +366,6 @@ public class HourglassController : MonoBehaviour
             
         }
     }
-
+    
    
 }
