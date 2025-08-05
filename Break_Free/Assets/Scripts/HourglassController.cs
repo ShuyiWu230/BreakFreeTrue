@@ -54,10 +54,11 @@ public class HourglassController : MonoBehaviour
     float maxHP = 100;
     public TextMesh HP,Energy;
     public Text EnergyText,WaterText,HPText;
-    public 
+
 
     //新增功能：碰到tag为handle的碰撞体就变成该碰撞体的子物体
-
+    //血量为零时出现失败界面：
+    public GameObject panel;
 
     void Start()
     {
@@ -79,11 +80,18 @@ public class HourglassController : MonoBehaviour
         flipSoundPlayer = GetComponent<FlipSoundPlayer>();
 
         this.tag = "Player";
-        
+        Time.timeScale = 1;
     }
 
     void Update()
     {
+        //Hp为零判负：
+        if (HPcurrent <= 0) 
+        {
+            Time.timeScale = 0f;
+            panel.SetActive(true);
+        }
+
         //水量检测ui
         WaterText.text = ((sandInTop + sandInBottom)*100).ToString("F0")+"%";
 
