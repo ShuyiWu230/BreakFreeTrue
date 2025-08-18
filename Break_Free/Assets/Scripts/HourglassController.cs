@@ -52,7 +52,7 @@ public class HourglassController : MonoBehaviour
     bool inWater;//小鱼状态
     float HPcurrent =100;
     float maxHP = 100;
-    public TextMesh HP,Energy;
+    //public TextMesh HP,Energy;
     public Text EnergyText,WaterText,HPText;
 
 
@@ -344,8 +344,7 @@ public class HourglassController : MonoBehaviour
         }
 
         HPText.text = "HP: " + HPcurrent.ToString("F0") + "%";
-        HP.text = "HP: " + HPcurrent.ToString("F0") + "%";
-        Energy.text = "Energy: " + energyCurrentLongth.ToString("F0") + "%";
+       
         EnergyText.text = energyCurrentLongth.ToString("F0") + "%";
 
         if (HPcurrent < 0) HPcurrent = 0;
