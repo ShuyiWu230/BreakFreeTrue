@@ -6,6 +6,7 @@ public class CameraController : MonoBehaviour
 {
     Transform target;
     Vector3 velocity = Vector3.zero;
+    public bool IsCanFollow;
 
     [Range(0, 1)]
     public float smoothTime;
@@ -13,12 +14,18 @@ public class CameraController : MonoBehaviour
     public Vector3 positionoffset;
     private void Awake()
     {
+        IsCanFollow = true;
         target = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     private void LateUpdate()
     {
-        Vector3 targetPosition = target.position+positionoffset;
-        transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);
+        if (IsCanFollow)
+        {
+            Vector3 targetPosition = target.position + positionoffset;
+            transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);
+        }
+
+
     }
 }

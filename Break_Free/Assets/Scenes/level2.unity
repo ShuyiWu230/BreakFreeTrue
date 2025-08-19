@@ -3956,8 +3956,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 436628051}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 774.3003, y: -0.106491916, z: -6.044304}
-  m_LocalScale: {x: 0.90288, y: 1, z: 1}
+  m_LocalPosition: {x: 774.3003, y: -0.67, z: -6.044304}
+  m_LocalScale: {x: 0.74853265, y: 1.384605, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1689762759}
@@ -4262,7 +4262,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 718698439497b5143a071bb11f4a0d60, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 95da59b932c7a3c4c9213eb29311f8a5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -10268,7 +10268,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1132032355
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11071,6 +11071,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd2116573554f4c46937772436b96ddc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsCanControl: 0
   moveDistance: 3
   flipDuration: 0.4
   sandDrainSpeed: 0.3
@@ -11086,6 +11087,14 @@ MonoBehaviour:
   dropSpeed: 1
   recoveryItemTag: Cube
   recoveryEffect: {fileID: 0}
+  HasKey: 0
+  slopeRaycastDistance: 1
+  slopeRaycastOffset: 0.5
+  slopeLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  slopeRotationSpeed: 10
+  maxSlopeAngle: 45
   energyBarLongth: 100
   EnergyText: {fileID: 0}
   WaterText: {fileID: 0}
@@ -28980,7 +28989,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6558439493127837165, guid: 15610a316b9e7a84ba4b806b729a353e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 722.6
+      value: 754.7
       objectReference: {fileID: 0}
     - target: {fileID: 6558439493127837165, guid: 15610a316b9e7a84ba4b806b729a353e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -29109,6 +29118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd2116573554f4c46937772436b96ddc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsCanControl: 0
   moveDistance: 3
   flipDuration: 0.4
   sandDrainSpeed: 0.1
@@ -29124,6 +29134,14 @@ MonoBehaviour:
   dropSpeed: 1
   recoveryItemTag: Cube
   recoveryEffect: {fileID: 0}
+  HasKey: 0
+  slopeRaycastDistance: 1
+  slopeRaycastOffset: 0.5
+  slopeLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  slopeRotationSpeed: 10
+  maxSlopeAngle: 45
   energyBarLongth: 100
   EnergyText: {fileID: 7699309982108885829}
   WaterText: {fileID: 1411749001178596650}
